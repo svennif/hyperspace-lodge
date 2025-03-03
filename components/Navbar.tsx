@@ -4,7 +4,7 @@ export default function Navbar() {
   return (
     <>
       <Box>
-        <h1>header</h1>
+        <h1>test</h1>
       </Box>
     </>
   )
