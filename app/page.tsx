@@ -1,10 +1,17 @@
-export default function Home() {
+import Navbar from "@/components/Navbar";
+import Container from "@mui/material/Container";
+import Box from "@mui/material/Box";
+import Typography from "@mui/material/Typography";
 
-	return (
-		<div>
-			<main>
-        <h1>Home</h1>
-			</main>
-		</div>
-	)
-}
+const Home = () => {
+  return (
+    <Box>
+      <Container maxWidth="lg">
+        <Navbar />
+        <Typography variant="h1">Home</Typography>
+      </Container>
+    </Box>
+  );
+};
+
+export default Home;
