@@ -1,6 +1,7 @@
-import Box from '@mui/material/Box'
-import Typography from '@mui/material/Typography'
-import Image from 'next/image'
+import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
+import Image from 'next/image';
 import MenuIcon from '@mui/icons-material/Menu';
 
 export default function Navbar() {
@@ -25,15 +26,16 @@ export default function Navbar() {
 					justifyContent: 'flex-end',
 					gridArea: 'nav-menu',
 				}}>
-				<Box sx={{
+				<Button sx={{
           display: 'flex',
           flexDirection: 'row',
           alignItems: 'center',
-          gap: 2
+          gap: 2,
+          color: '#ffffff'
         }}>
           <Typography>Menu</Typography>
           <MenuIcon />
-        </Box>
+        </Button>
 			</Box>
 		</Box>
 	)
