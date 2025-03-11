@@ -1,42 +1,97 @@
+'use client'
+
+import { useState } from 'react';
+import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
+import Toolbar from '@mui/material/Toolbar';
+import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
-import Image from 'next/image';
+import Menu from '@mui/material/Menu';
 import MenuIcon from '@mui/icons-material/Menu';
+import Container from '@mui/material/Container';
+import Button from '@mui/material/Button';
+import MenuItem from '@mui/material/MenuItem';
+import Link from '@mui/material/Link';
+import Image from 'next/image';
+
+const pages = ['Hotels', 'Pricing', 'Blog'];
 
 export default function Navbar() {
-	return (
-		<Box
-			sx={{
-				display: 'grid',
-				gridTemplateColumns: '1fr 1fr',
-				gridTemplateAreas: '"nav-logo nav-menu"',
-				alignItems: 'center',
-			}}>
-			<Box
-				sx={{
-					display: 'flex',
-					gridArea: 'nav-logo',
-				}}>
-				<Image width={80} height={80} src="/images/logo2.webp" alt="HyperSpace Lodge Logo" />
-			</Box>
-			<Box
-				sx={{
-					display: 'flex',
-					justifyContent: 'flex-end',
-					gridArea: 'nav-menu',
-				}}>
-				<Button sx={{
-          display: 'flex',
-          flexDirection: 'row',
-          alignItems: 'center',
-          gap: 2,
-          color: '#ffffff'
-        }}>
-          <Typography>Menu</Typography>
-          <MenuIcon />
-        </Button>
-			</Box>
-		</Box>
-	)
+  const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
+
+  const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
+    setAnchorElNav(event.currentTarget);
+  };
+
+  const handleCloseNavMenu = () => {
+    setAnchorElNav(null);
+  };
+
+  return (
+    <AppBar position="static">
+      <Container maxWidth="xl">
+        <Toolbar disableGutters>
+          <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
+            <IconButton
+              size="large"
+              aria-label="account of current user"
+              aria-controls="menu-appbar"
+              aria-haspopup="true"
+              onClick={handleOpenNavMenu}
+              color="inherit"
+            >
+              <MenuIcon />
+            </IconButton>
+            <Menu
+              id="menu-appbar"
+              anchorEl={anchorElNav}
+              anchorOrigin={{
+                vertical: 'bottom',
+                horizontal: 'left',
+              }}
+              keepMounted
+              transformOrigin={{
+                vertical: 'top',
+                horizontal: 'left',
+              }}
+              open={Boolean(anchorElNav)}
+              onClose={handleCloseNavMenu}
+              sx={{ display: { xs: 'block', md: 'none' } }}
+            >
+              {pages.map((page) => (
+                <MenuItem key={page} onClick={handleCloseNavMenu}>
+                  <Typography sx={{ textAlign: 'center' }}>{page}</Typography>
+                </MenuItem>
+              ))}
+            </Menu>
+          </Box>
+          <Link
+							href="/"
+              underline='none'
+							sx={{
+								display: 'flex',
+								flexDirection: 'row',
+								alignItems: 'center',
+								gap: 1,
+                textDecoration: 'none',
+                color: '#fff'
+							}}>
+							<Image width="80" height="80" src="/images/logo.webp" alt="Hyperspace Lodge logo" />
+							<Typography variant="h5">Hyperspace Lodge</Typography>
+						</Link>
+          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+            {pages.map((page) => (
+              <Button
+                key={page}
+                onClick={handleCloseNavMenu}
+                sx={{ my: 2, color: 'white', display: 'block' }}
+              >
+                {page}
+              </Button>
+            ))}
+          </Box>
+        </Toolbar>
+      </Container>
+    </AppBar>
+  );
 }
