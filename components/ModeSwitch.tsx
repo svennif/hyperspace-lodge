@@ -6,6 +6,7 @@ import IconButton, { IconButtonOwnProps } from '@mui/material/IconButton';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import { useColorScheme } from '@mui/material/styles';
+import { green } from '@mui/material/colors';
 
 export default function ColorModeIconDropdown(props: IconButtonOwnProps) {
   const { mode, systemMode, setMode } = useColorScheme();
@@ -33,6 +34,7 @@ export default function ColorModeIconDropdown(props: IconButtonOwnProps) {
           borderRadius: theme.shape.borderRadius,
           border: '1px solid',
           borderColor: theme.palette.divider,
+          '&:hover': { bgcolor: green[600] },
         })}
       />
     );
@@ -48,14 +50,21 @@ export default function ColorModeIconDropdown(props: IconButtonOwnProps) {
         data-screenshot="toggle-mode"
         onClick={handleClick}
         disableRipple
-        size="small"
+        size="medium"
         aria-controls={open ? 'color-scheme-menu' : undefined}
         aria-haspopup="true"
         aria-expanded={open ? 'true' : undefined}
+        sx={( theme ) => ({
+          borderRadius: '8px',
+          border: '1px solid',
+          borderColor: theme.palette.divider,
+          '&:hover': { bgcolor: green[600] },
+        })}
         {...props}
       >
         {icon}
       </IconButton>
+
       <Menu
         anchorEl={anchorEl}
         id="account-menu"
