@@ -1,17 +1,16 @@
-import Navbar from "@/components/Navbar";
-import Container from "@mui/material/Container";
-import Box from "@mui/material/Box";
-import Typography from "@mui/material/Typography";
+import Typography from '@mui/material/Typography';
+import Container from '@mui/material/Container';
 
 const Home = () => {
-  return (
-    <Box>
-      <Container maxWidth="lg">
-        <Navbar />
-        <Typography variant="h1">Home</Typography>
+	return (
+		<>
+      <Container>
+        <Typography variant="h1" sx={{}}>
+          Home
+        </Typography>
       </Container>
-    </Box>
-  );
-};
+		</>
+	)
+}
 
-export default Home;
+export default Home
