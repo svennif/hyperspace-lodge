@@ -1,30 +1,21 @@
-import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import "./globals.css";
+import { ReactNode } from 'react';
 import { AppRouterCacheProvider } from '@mui/material-nextjs/v15-appRouter';
-import { ThemeProvider } from "@mui/material";
-import theme from "@/styles/theme";
-import Navbar from "@/components/Navbar";
+import { ThemeProvider } from '@mui/material/styles';
+import CssBaseline from '@mui/material/CssBaseline';
+import theme from '@/styles/theme';
+import InitColorSchemeScript from '@mui/material/InitColorSchemeScript';
+import Navbar from '@/components/Navbar';
 
-const inter = Inter({ subsets: ["latin"] });
-
-export const metadata: Metadata = {
-  title: "Hyper Space Lodge",
-  description: "Hyperspace Lodge: Stay Beyond the Stars",
-};
-
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout(props: { children: ReactNode }) {
   return (
-    <html lang="en">
-      <body className={inter.className}>
+    <html lang="en" suppressHydrationWarning>
+      <body>
+        <InitColorSchemeScript attribute="class" />
         <AppRouterCacheProvider options={{ enableCssLayer: true }}>
           <ThemeProvider theme={theme}>
+            <CssBaseline />
             <Navbar />
-            {children}
+            {props.children}
           </ThemeProvider>
         </AppRouterCacheProvider>
       </body>
