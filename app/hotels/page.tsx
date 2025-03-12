@@ -1,7 +1,7 @@
 'use client'
 
-import { useEffect, useState } from 'react';
-import { supabase } from '@/utilities/initSupabase';
+/* import { useEffect, useState } from 'react';
+import { supabase } from '@/utilities/initSupabase'; */
 import { Tables } from '@/utilities/supabase.types';
 import Link from 'next/link';
 import Box from '@mui/material/Box';
@@ -9,8 +9,23 @@ import Container from '@mui/material/Container';
 
 type Hotels = Tables<'hotels'>
 
+const testHotels = [
+  {
+    id: 1,
+    name: 'hotel1',
+  },
+  {
+    id: 2,
+    name: 'hotel2',
+  },
+  {
+    id: 3,
+    name: 'hotel3',
+  },
+]
+
 export default function Hotels() {
-	const [hotels, setHotels] = useState<Hotels[]>([])
+/* 	const [hotels, setHotels] = useState<Hotels[]>([])
 
 	useEffect(() => {
 		const fetchHotels = async () => {
@@ -28,16 +43,14 @@ export default function Hotels() {
   if (!hotels) {
     // To add a spinner at some point, maybe
     return <div>Loading...</div>
-  }
+  } */
 
 	return (
 		<Container>
 			<Box>
-				{hotels.map((hotel) => (
-					<Link key={hotel.id} href={`/hotels/${hotel.id}`} passHref>
-							{hotel.name} {hotel.id}
-					</Link>
-				))}
+        {testHotels.map((hotel) => (
+          <Link key={hotel.id} href={`/${hotel.name}`}>{hotel.name}</Link>
+        ))}
 			</Box>
 		</Container>
 	)
