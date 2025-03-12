@@ -38,7 +38,9 @@ export default function Navbar() {
 	return (
 		<AppBar position="static">
 			<Container maxWidth="xl">
-				<Toolbar disableGutters>
+				<Toolbar disableGutters sx={{
+          padding: 1,
+        }}>
 					<Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
 						<IconButton size="large" aria-label="account of current user" aria-controls="menu-appbar" aria-haspopup="true" onClick={handleOpenNavMenu} color="inherit">
 							<MenuIcon />
@@ -77,8 +79,7 @@ export default function Navbar() {
 							color: '#fff',
 							marginRight: 3,
 						}}>
-						<Image width="70" height="70" src="/images/logo.webp" alt="Hyperspace Lodge logo" />
-						<Typography variant="h6">Hyperspace Lodge</Typography>
+						<Image width="210" height="70" priority src="/images/logo-text-light.webp" alt="Hyperspace Lodge logo" />
 					</Link>
 					<Box sx={{ height: '70px', alignItems: 'center', flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
 						{pages.map((page) => (
