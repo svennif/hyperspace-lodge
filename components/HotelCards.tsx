@@ -20,6 +20,7 @@ export default function HotelCards({ id, name, image }: HotelCardsProps) {
           }}>
 						{name}
 					</Typography>
+          
 				</CardContent>
 			</CardActionArea>
 		</Card>

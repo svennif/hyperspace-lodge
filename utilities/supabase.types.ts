@@ -36,22 +36,34 @@ export type Database = {
     Tables: {
       hotels: {
         Row: {
+          available: boolean
           created_at: string
           id: number
           image: string | null
+          location: string
           name: string
+          price: number
+          rating: number | null
         }
         Insert: {
+          available: boolean
           created_at?: string
           id?: number
           image?: string | null
+          location: string
           name: string
+          price: number
+          rating?: number | null
         }
         Update: {
+          available?: boolean
           created_at?: string
           id?: number
           image?: string | null
+          location?: string
           name?: string
+          price?: number
+          rating?: number | null
         }
         Relationships: []
       }
